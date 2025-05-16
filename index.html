@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filiberto Oceguera | Code-Slinging Developer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">Filiberto Oceguera-Huizar</h1>
+      <button class="hamburger" aria-label="Toggle menu">
+        &#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    
+    </nav>
+  </header>
+
+  <section class="home-section fade-in">
+    <div class="intro-text">
+      <h2>Hey there, I'm Filiberto.</h2>
+      <p>Code-slinging developer with a love for the west and untamed ideas.</p>
+      <img src="images/profilePic.png" alt="Avatar" class="avatar" />
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Filiberto Oceguera-Huizar. Ride safe, be well, and code hard.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+ </script>
+
+</body>
+</html>

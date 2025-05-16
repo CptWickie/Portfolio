@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | Filiberto Oceguera</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body class="about-page">
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">Filiberto Oceguera-Huizar</h1>
+      <button class="hamburger" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+<main>
+  <section class="about-section fade-in">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>Hey Partner, The name is Filiberto, Phil for short. I’m a developer with a passion for building meaningful tools and solving aches and pains in the coding frontier. I carry a bit of rustic grit into everything I build. Whether it’s a full-stack web application or a classroom STEM activity, I bring clarity, curiosity, and a touch of frontier spirit.</p>
+
+      <p>I'm currently an after school instructor for 5th grade students and we explore STEM by making guiding lessons and crafting engaging experiences. Meanwhile, Im also a student knee deep into the world of code; leading group projects, coordinating teams, and sharpening my skills in Python, C++, JavaScript, and beyond.</p>
+
+      <p>As I move along i'm focusing more on development; combining frontend polish with backend logic to build smooth, responsive, and purposeful applications.</p>
+
+      <div class="resume-actions">
+      <a href="FilibertoOcegueraHuizarResume.pdf" target="_blank" class="resume-link">View Resume</a>
+      <a href="FilibertoOcegueraHuizarResume.pdf" download class="resume-link">Download Resume</a>
+</div>
+
+    </div>
+  </section>
+</main>
+
+  <footer>
+    <p>&copy; 2025 Filiberto Oceguera. Ride safe, be well, and code hard.</p>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Filiberto Oceguera</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  
+</head>
+<body class="projects-page">
+
+
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">F.O.</h1>
+      <button class="hamburger" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="projects-container fade-in">
+    <aside class="project-list">
+      <button onclick="showProject(0)">CalFire Web App</button>
+      <button onclick="showProject(1)">Inventory Tracker</button>
+      <button onclick="showProject(2)">Retro Game Clone</button>
+    </aside>
+    <section class="project-details fade-in">
+      <h2 id="project-title">CalFire Web App</h2>
+      <p id="project-description">A location-based tool to cross-reference real estate and California wildfire zones. 
+        <p id="project-tech">
+          Technologies: React, Node.js, Express, Leaflet<br>
+          <a id="project-link" href="https://becaliwildfiresafe.onrender.com/" target="_blank" class="inline-link">Visit Website</a>
+          <span class="terminal-separator">┃</span>
+          <a id="project-link" href="https://github.com/CptWickie/calfire-home-checker" target="_blank" class="inline-link">github</a>
+        </p>
+      </p>
+      <div class="screenshot-viewer">
+        <img src="images/calfire1.png" class="active" alt="Screenshot 1">
+        <img src="images/calfire2.png" alt="Screenshot 2">
+        <img src="images/calfire3.png" alt="Screenshot 3">
+      </div>
+      <div class="screenshot-controls">
+        <button onclick="prevScreenshot()">&lt;</button>
+        <button onclick="nextScreenshot()">&gt;</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Filiberto Oceguera. Ride safe, be well, and code hard.</p>
+  </footer>
+
+  <script>
+    const projects = [
+      {
+        title: "CalFire Web App",
+        description: "A location-based tool to cross-reference real estate and California wildfire zones using React.js, Node.js, and Leaflet.",
+        tech: "Technologies: React, Node.js, Express, Leaflet",
+        link: "https://becaliwildfiresafe.onrender.com/",
+        github: "https://github.com/CptWickie/calfire-home-checker",
+        screenshots: ["images/calfire1.png", "images/calfire2.png", "images/calfire3.png"]
+      },
+      {
+        title: "School Web Database app",
+        description: `A web-based application that allows professors and students to interact with a university course database. 
+        The backend logic securely connects to a remote MariaDB instance on a university-hosted Linux server, while the frontend uses custom styling and intuitive forms. 
+        Data was modeled using an ER diagram and deployed for browser access via CSUF’s ECS server.`,
+        tech: "Technologies: MySQL, PHP.",
+        screenshots: ["images/database1.png", "images/database2.png","images/database3.png" ]
+      },
+      {
+        title: "Retro Game Clone",
+        description: "A side-scrolling 2D shooter inspired by classic arcade games. Built with Pygame.",
+        tech: "Technologies: Python, Pygame",
+        video: "videos/retro-demo.mp4"
+      }
+    ];
+      const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    let currentProject = 0;
+    let currentScreenshot = 0;
+
+    function showProject(index) {
+      currentProject = index;
+      currentScreenshot = 0;
+      const project = projects[index];
+      document.getElementById('project-title').textContent = project.title;
+      
+      document.getElementById('project-description').textContent = project.description;
+      
+      document.getElementById('project-tech').innerHTML = 
+      `${project.tech}<br>
+      ${project.link ? `<a href="${project.link}" target="https://becaliwildfiresafe.onrender.com/" class="inline-link">Visit Website</a>` : `<span class="inline-link faded">Live Demo Coming Soon</span>`}
+      <span class="terminal-separator">┃</span>
+      ${project.github ? `<a href="${project.github}" target="https://github.com/CptWickie/calfire-home-checker" class="inline-link">GitHub</a>` : `<span class="inline-link faded">Private Repo</span>`}`;
+
+
+      const viewer = document.querySelector('.screenshot-viewer');
+      if (project.video) {
+        viewer.innerHTML = `
+          <video class="active" autoplay muted loop playsinline>
+            <source src="${project.video}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      } else {
+        viewer.innerHTML = project.screenshots.map((src, i) => 
+          `<img src="${src}" class="${i === 0 ? 'active' : ''}" alt="Screenshot ${i + 1}">`
+        ).join('');
+      }
+
+    }
+
+    function showScreenshot(index) {
+      const images = document.querySelectorAll('.screenshot-viewer img');
+      images.forEach(img => img.classList.remove('active'));
+      if (images[index]) images[index].classList.add('active');
+    }
+
+    function nextScreenshot() {
+      const total = projects[currentProject].screenshots.length;
+      currentScreenshot = (currentScreenshot + 1) % total;
+      showScreenshot(currentScreenshot);
+    }
+
+    function prevScreenshot() {
+      const total = projects[currentProject].screenshots.length;
+      currentScreenshot = (currentScreenshot - 1 + total) % total;
+      showScreenshot(currentScreenshot);
+    }
+
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('show');
+    });
+  </script>
+<img src="images/bear.png" alt="Bear" class="corner-bear">
+
+
+</body>
+</html>

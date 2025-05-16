@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Filiberto Oceguera</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet" />
+</head>
+<body class="contact-page">
+
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">F.O.</h1>
+      <button class="hamburger" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-section fade-in">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <p>If you want to collaborate, ask a question, or just share a good Norteña — feel free to reach out.</p>
+
+        <form
+            action="https://formspree.io/f/xnndwnrk"
+            method="POST"
+            class="contact-form"
+            >
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+            <!-- optional subject and redirect -->
+            <input type="hidden" name="_subject" value="New Message from Filiberto's Portfolio" />
+            <input type="hidden" name="_redirect" value="thankyou.html" />
+
+            <!-- anti-spam honeypot -->
+            <input type="text" name="_gotcha" style="display:none" />
+
+            <button type="submit">Send</button>
+        </form>
+
+
+        <div class="social-links">
+          <a href="https://github.com/CptWickie" target="_blank">GitHub</a>
+          <span class="terminal-separator">┃</span>
+          <a href="https://www.linkedin.com/in/filibertooceguera/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Filiberto Oceguera. Ride safe, be well, and code hard.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('show');
+    });
+  </script>
+
+</body>
+</html>
