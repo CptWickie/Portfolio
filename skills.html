@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet" />
 </head>
+
 <body class="skills-page">
 
   <header>
@@ -22,7 +23,6 @@
       </ul>
     </nav>
   </header>
-  <img src="images/agave-corner.svg" alt="Agave Embossed" class="corner-agave">
   <main>
     <section class="skills-section fade-in">
       <div class="container">
@@ -72,7 +72,7 @@
   <footer>
     <p>&copy; 2025 Filiberto Oceguera. Ride safe, be well, and code hard.</p>
   </footer>
-
+  <img src="images/agave-corner.svg" alt="Agave Embossed" class="corner-agave">
   <script>
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -87,7 +87,11 @@
     document.querySelector('.hamburger').addEventListener('click', () => {
       document.querySelector('.nav-links').classList.toggle('show');
     });
+     window.addEventListener('DOMContentLoaded', () => {
+    const agave = document.querySelector('.corner-agave');
+    agave.classList.add('visible');
+  });
   </script>
-
+  
 </body>
 </html>

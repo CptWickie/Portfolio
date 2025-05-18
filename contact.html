@@ -25,7 +25,9 @@
 
   <main>
     <section class="contact-section fade-in">
+      
       <div class="container">
+        <div class="frosty-box">
         <h2>Contact Me</h2>
         <p>If you want to collaborate, ask a question, or just share a good Norteña — feel free to reach out.</p>
 
@@ -55,9 +57,17 @@
           <a href="https://www.linkedin.com/in/filibertooceguera/" target="_blank">LinkedIn</a>
         </div>
       </div>
+        </div>
     </section>
+    <div style="position: relative; height: 0; overflow: visible;">
+    <div class="card-fan">
+  <img src="Cards/card-8s.png" class="card" style="--i:4;">
+  <img src="Cards/card-as.png" class="card" style="--i:3;">
+  <img src="Cards/card-ac.png" class="card" style="--i:2;">
+  <img src="Cards/card-8c.png" class="card" style="--i:1;">
+  <img src="Cards/card-back.png" class="card" style="--i:0;">
+</div></div>
   </main>
-
   <footer>
     <p>&copy; 2025 Filiberto Oceguera. Ride safe, be well, and code hard.</p>
   </footer>
@@ -77,6 +87,18 @@
       document.querySelector('.nav-links').classList.toggle('show');
     });
   </script>
+
+ <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      document.querySelector('.card-fan')?.classList.add('show');
+    }, 400); // 400ms delay allows frosty box to render first
+  });
+</script>
+
+
+
+
 
 </body>
 </html>
